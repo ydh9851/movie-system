@@ -1,0 +1,48 @@
+# ---------- Java / Maven ----------
+backend/target/
+*.class
+*.jar.original
+
+# ---------- IDE ----------
+.idea/
+*.iml
+.vscode/
+*.swp
+
+# ---------- 前端（Vite） ----------
+frontend/node_modules/
+# 构建产物：npm run build 后需手动同步到 backend/src/main/resources/static/admin
+frontend/admin/
+frontend/admin2/
+frontend/dist/
+frontend/.vite/
+
+# ---------- Python ----------
+__pycache__/
+*.pyc
+.venv/
+
+# ---------- 日志与临时文件 ----------
+*.log
+log/
+_boot.log
+backend/log/
+
+# ---------- 系统 / Office 临时 ----------
+.DS_Store
+Thumbs.db
+~$*
+
+# ---------- 运行期生成 ----------
+frontend/_ui_test.*
+frontend/test_*.mjs
+
+# ---------- 数据集原始文件与本地备份 ----------
+# Kaggle 原始数据集（ml-25m/ratings.csv 647MB、genome-scores.csv 415MB 等）远超
+# GitHub 单文件 100MB 上限，且可由 sql/build_dataset.py 重新生成，不纳入版本库
+data/raw/
+# 换数据集前的本地回滚备份（保留在本机即可）
+data/_backup_original_dataset/
+
+# ---------- 预测模型缓存（可重新训练生成） ----------
+algorithm/prediction/model_cache/
