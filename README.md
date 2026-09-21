@@ -27,7 +27,7 @@ kaggle datasets download -d rounakbanik/the-movies-dataset -p data/raw --unzip
 # 3) 重建清洗产物 / EDA 图 / 业务库
 .venv\Scripts\python.exe algorithm/FeatureEDA/preprocess.py
 .venv\Scripts\python.exe algorithm/FeatureEDA/eda.py
-.venv\Scripts\python.exe sql/import_data.py --password 123456
+.venv\Scripts\python.exe sql/import_data.py --password <你的数据库密码>
 ```
 
 #### 软件架构
@@ -93,7 +93,7 @@ movie-system/                          # 系统根目录（整个目录拷贝到
 2. 启动 MySQL 与 Redis 服务。
 3. 初始化数据库（建库建表，Windows 在 mysql bin 目录或配好 PATH 后执行）：
    ```bash
-   mysql -uroot -p123456 < sql/vidio_mangage_db.sql
+   mysql -uroot -p < sql/vidio_mangage_db.sql
    ```
 4. （可选）把 TMDB / MovieLens 数据导入业务库：
    ```bash
@@ -236,7 +236,7 @@ Set-Location ..
 **注意事项**
 - 视频上传（可选功能）：默认上传目录为本机 `D:\video\videoUpload`。目标机如无此目录请先创建，
   或修改 `frontend/src/views/video/upload.vue` 中 `Path.url`（约第 78 行）指向任意本机目录后重新构建前端。
-- 数据库账号默认 `root / 123456`，如需修改请同步改 `backend/src/main/resources/application-dev.yml`。
+- 数据库账号密码在 `backend/src/main/resources/application-dev.yml` 中配置，请改成你本机的 MySQL 账号，不要把真实口令提交到仓库。
 - 只改 Java 后端：重启即可；改前端：需在 `frontend` 目录 `npm run build`，并把产物同步到
   `backend/src/main/resources/static/admin` 后重新打包。
 
